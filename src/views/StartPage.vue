@@ -1,10 +1,26 @@
 <template>
-  <page-layout title="">
-    <strong class="capitalize">{{ $route.params.id }}aa</strong>
-    <p>
-      Explore
-      <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a>
-    </p>
+  <page-layout title="Home">
+    <div>
+      <h1 class="section-header">Entries</h1>
+      <div>
+        <ion-button>Create</ion-button>
+        <ion-button>View</ion-button>
+      </div>
+    </div>
+    <div>
+      <h1 class="section-header">Entry Types</h1>
+      <div>
+        <ion-button>Create</ion-button>
+        <ion-button>View</ion-button>
+      </div>
+    </div>
+    <div>
+      <h1 class="section-header">Routines</h1>
+      <div>
+        <ion-button>Create</ion-button>
+        <ion-button>View</ion-button>
+      </div>
+    </div>
   </page-layout>
 </template>
 
