@@ -4,7 +4,7 @@
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
-            <ion-list-header>Inbox</ion-list-header>
+            <ion-list-header>Menu</ion-list-header>
 
             <ion-menu-toggle :auto-hide="false" v-for="(p, i) in appPages" :key="i">
               <ion-item
@@ -48,17 +48,15 @@ import { mailOutline } from "ionicons/icons";
 const selectedIndex = ref(0);
 const appPages = [
   {
-    title: "Inbox",
+    title: "Home",
     url: "/",
     iosIcon: mailOutline,
     mdIcon: mailOutline,
   },
 ];
 
-const path = window.location.pathname.split("folder/")[1];
-if (path !== undefined) {
-  selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === path.toLowerCase());
-}
+const currentPageName = ""; // TODO
+selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === currentPageName.toLowerCase());
 </script>
 
 <style scoped>
