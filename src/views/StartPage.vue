@@ -3,7 +3,7 @@
     <div>
       <h1 class="section-header">Entries</h1>
       <div>
-        <ion-button>Create</ion-button>
+        <ion-button router-link="/entry/create">Create</ion-button>
         <ion-button>View</ion-button>
       </div>
     </div>
@@ -25,5 +25,6 @@
 </template>
 
 <script setup lang="ts">
+import { IonButton } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
 </script>
