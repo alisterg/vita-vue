@@ -3,7 +3,8 @@
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-menu-button color="primary"></ion-menu-button>
+          <ion-menu-button v-if="$route.path === '/home'" color="primary"></ion-menu-button>
+          <ion-back-button />
         </ion-buttons>
         <ion-title>{{ props.title }}</ion-title>
       </ion-toolbar>
@@ -22,7 +23,16 @@
 </template>
 
 <script setup lang="ts">
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from "@ionic/vue";
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonMenuButton,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+} from "@ionic/vue";
 
 const props = defineProps<{ title: string }>();
 </script>
