@@ -4,7 +4,7 @@
       <h1 class="section-header">Entries</h1>
       <div>
         <ion-button router-link="/entry/create">Create</ion-button>
-        <ion-button>View</ion-button>
+        <ion-button router-link="/entry/list">View</ion-button>
       </div>
     </div>
     <div>
