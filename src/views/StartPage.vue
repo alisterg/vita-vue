@@ -17,7 +17,7 @@
     <div>
       <h1 class="section-header">Routines</h1>
       <div>
-        <ion-button>Create</ion-button>
+        <ion-button router-link="/routine/create">Create</ion-button>
         <ion-button>View</ion-button>
       </div>
     </div>
