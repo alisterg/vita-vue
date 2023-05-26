@@ -10,7 +10,7 @@
     <div>
       <h1 class="section-header">Entry Types</h1>
       <div>
-        <ion-button>Create</ion-button>
+        <ion-button router-link="/entrytype/create">Create</ion-button>
         <ion-button>View</ion-button>
       </div>
     </div>

@@ -18,6 +18,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/entry/list",
     component: () => import("../views/EntryList.vue"),
   },
+  {
+    path: "/entrytype/create",
+    component: () => import("../views/EntryTypeCreate.vue"),
+  },
 ];
 
 const router = createRouter({

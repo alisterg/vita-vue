@@ -12,6 +12,8 @@
     </ion-select>
 
     <template v-if="selectedEntryType">
+      <h3>{{ selectedEntryType.key }}</h3>
+
       <div v-for="prompt in selectedEntryType.prompts" class="prompt-container">
         <ion-input
           :label="prompt"

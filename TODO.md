@@ -2,8 +2,8 @@
 
 - [x] Basic app setup and layout
 - [x] EntryCreate page
-- [ ] EntryList page
-- [ ] EntryTypeCreate page
+- [x] EntryList page
+- [x] EntryTypeCreate page
 - [ ] EntryTypeList page
 - [ ] RoutineCreate page
 - [ ] RoutineList page
