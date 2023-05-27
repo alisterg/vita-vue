@@ -6,7 +6,7 @@
       v-model="selectedEntryType"
       @ion-change="entryTypeChanged"
     >
-      <ion-select-option v-for="entryType in entryTypes" :value="entryType">
+      <ion-select-option v-for="entryType in store.entryTypes" :value="entryType">
         {{ entryType.key }}
       </ion-select-option>
     </ion-select>
@@ -33,13 +33,12 @@ import { IonButton, IonInput, IonSelect, IonSelectOption } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
 import { EntryType } from "@/types";
 import { ref } from "vue";
+import { getStore } from "@/store";
+
+const store = getStore();
 
 const selectedEntryType = ref();
 const promptResponses = ref<Record<string, string>>({});
-
-const entryTypes: EntryType[] = [
-  { key: "fruit", prompts: ["Which fruit is your favourite?", "How many fruits are there?"] },
-];
 
 function entryTypeChanged(event: CustomEvent) {
   const entryType = event.detail.value as EntryType;

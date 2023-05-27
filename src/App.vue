@@ -44,6 +44,7 @@ import {
 } from "@ionic/vue";
 import { ref } from "vue";
 import { mailOutline } from "ionicons/icons";
+import { getStore } from "./store";
 
 const selectedIndex = ref(0);
 const appPages = [
@@ -54,6 +55,9 @@ const appPages = [
     mdIcon: mailOutline,
   },
 ];
+
+const store = getStore();
+store.initMockData();
 
 const currentPageName = ""; // TODO
 selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === currentPageName.toLowerCase());

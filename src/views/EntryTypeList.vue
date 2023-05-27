@@ -23,20 +23,18 @@
 </template>
 
 <script setup lang="ts">
-import { IonInput } from "@ionic/vue";
+import { IonInput, IonButton } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
 import { EntryType } from "@/types";
 import { computed, ref } from "vue";
+import { getStore } from "@/store";
+
+const store = getStore();
 
 const searchText = ref("");
 
-const allEntryTypes: EntryType[] = [
-  { key: "fruit", prompts: ["Which fruit is your favourite?", "How many fruits are there?"] },
-  { key: "vegetables", prompts: ["Which vegetable is your favourite?", "How many vegetables are there?"] },
-];
-
 const filteredEntryTypes = computed(() => {
-  return allEntryTypes.filter((entryType) => {
+  return store.entryTypes.filter((entryType) => {
     let searchMatches = true;
     if (searchText.value.length > 0) {
       searchMatches = searchPrompts(entryType, searchText.value) || entryType.key.includes(searchText.value);

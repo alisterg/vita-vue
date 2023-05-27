@@ -34,21 +34,19 @@ import { IonButton, IonInput, IonSelect, IonSelectOption, toastController } from
 import PageLayout from "./PageLayout.vue";
 import { EntryType, Routine } from "@/types";
 import { computed, ref } from "vue";
+import { getStore } from "@/store";
+
+const store = getStore();
 
 const routineName = ref("");
 const isAdding = ref(false);
 const selectedEntryTypes = ref<EntryType[]>([]);
 
 const availableEntryTypes = computed(() => {
-  return allEntryTypes.filter(
+  return store.entryTypes.filter(
     (entryType) => !selectedEntryTypes.value.find((selected) => selected.key === entryType.key)
   );
 });
-
-const allEntryTypes: EntryType[] = [
-  { key: "fruit", prompts: ["Which fruit is your favourite?", "How many fruits are there?"] },
-  { key: "vegetables", prompts: [""] },
-];
 
 async function toasty(msg: string) {
   const toast = await toastController.create({

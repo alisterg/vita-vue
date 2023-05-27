@@ -3,7 +3,7 @@
     <div class="filter-container">
       <ion-select aria-label="entry type" placeholder="Entry type" v-model="selectedEntryType">
         <ion-select-option>Any</ion-select-option>
-        <ion-select-option v-for="entryType in entryTypes" :value="entryType">
+        <ion-select-option v-for="entryType in store.entryTypes" :value="entryType">
           {{ entryType.key }}
         </ion-select-option>
       </ion-select>
@@ -32,60 +32,19 @@
 </template>
 
 <script setup lang="ts">
-import { IonInput, IonSelect, IonSelectOption } from "@ionic/vue";
+import { IonInput, IonSelect, IonSelectOption, IonButton } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
-import { Entry, EntryType } from "@/types";
+import { Entry } from "@/types";
 import { computed, ref } from "vue";
+import { getStore } from "@/store";
+
+const store = getStore();
 
 const searchText = ref("");
 const selectedEntryType = ref();
 
-const allEntries: Entry[] = [
-  {
-    uuid: "123",
-    entryType: "fruit",
-    entryData: { "Which fruit is your favourite?": "All of them", "How many fruits are there?": "100" },
-    createdAt: Date.now(),
-  },
-  {
-    uuid: "321",
-    entryType: "vegetables",
-    entryData: { "Which vegetable is your favourite?": "None of them", "How many vegetables are there?": "0" },
-    createdAt: Date.now(),
-  },
-  {
-    uuid: "abc",
-    entryType: "fruit",
-    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
-    createdAt: 1672531200000,
-  },
-  {
-    uuid: "abc",
-    entryType: "fruit",
-    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
-    createdAt: 1672531200000,
-  },
-  {
-    uuid: "abc",
-    entryType: "fruit",
-    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
-    createdAt: 1672531200000,
-  },
-  {
-    uuid: "abc",
-    entryType: "fruit",
-    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
-    createdAt: 1672531200000,
-  },
-];
-
-const entryTypes: EntryType[] = [
-  { key: "fruit", prompts: ["Which fruit is your favourite?", "How many fruits are there?"] },
-  { key: "vegetables", prompts: ["Which vegetable is your favourite?", "How many vegetables are there?"] },
-];
-
 const filteredEntries = computed(() => {
-  return allEntries.filter((entry) => {
+  return store.entries.filter((entry) => {
     const entryTypeMatches =
       !selectedEntryType.value || selectedEntryType.value === "Any" || selectedEntryType.value.key === entry.entryType;
 
