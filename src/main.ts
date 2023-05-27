@@ -25,7 +25,12 @@ import "./theme/variables.css";
 
 import "./style.css";
 
+import { createPinia } from "pinia";
+
+const pinia = createPinia();
 const app = createApp(App).use(IonicVue, { mode: "ios" }).use(router);
+
+app.use(pinia);
 
 router.isReady().then(() => {
   app.mount("#app");
