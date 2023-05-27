@@ -10,7 +10,7 @@
 - [ ] EntryUpdate
 - [ ] EntryTypeUpdate
 - [ ] RoutineUpdate
-- [ ] RoutineExecute
+- [x] RoutineExecute
 - [ ] Hook up API
 - [ ] Add build instructions to docs
 

@@ -34,6 +34,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/routine/list",
     component: () => import("../views/RoutineList.vue"),
   },
+  {
+    path: "/routine/execute",
+    component: () => import("../views/RoutineExecute.vue"),
+  },
 ];
 
 const router = createRouter({

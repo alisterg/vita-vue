@@ -11,7 +11,7 @@ export const getStore = defineStore("store", {
   actions: {
     initMockData() {
       this.routines = [
-        { key: "daily", entryTypes: ["fruit", "yogaClass"] },
+        { key: "daily", entryTypes: ["fruit", "vegetables"] },
         { key: "weekly", entryTypes: ["groceries", "vegetables"] },
       ];
 
