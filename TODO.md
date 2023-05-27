@@ -6,7 +6,7 @@
 - [x] EntryTypeCreate page
 - [x] EntryTypeList page
 - [x] RoutineCreate page
-- [ ] RoutineList page
+- [x] RoutineList page
 - [ ] EntryUpdate
 - [ ] EntryTypeUpdate
 - [ ] RoutineUpdate

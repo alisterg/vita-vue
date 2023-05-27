@@ -30,6 +30,10 @@ const routes: Array<RouteRecordRaw> = [
     path: "/routine/create",
     component: () => import("../views/RoutineCreate.vue"),
   },
+  {
+    path: "/routine/list",
+    component: () => import("../views/RoutineList.vue"),
+  },
 ];
 
 const router = createRouter({
