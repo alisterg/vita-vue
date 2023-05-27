@@ -17,6 +17,7 @@
         <th>Created</th>
         <th>Type</th>
         <th>Data</th>
+        <th></th>
       </thead>
       <tr class="entry-row" v-for="entry in filteredEntries">
         <td class="entry-date">{{ formatDate(entry.createdAt) }}</td>
@@ -24,6 +25,7 @@
         <td class="entry-data">
           <div v-for="(answer, prompt) in entry.entryData">{{ prompt }}: {{ answer }}</div>
         </td>
+        <td><ion-button size="small">Edit</ion-button></td>
       </tr>
     </table>
   </page-layout>
@@ -57,6 +59,24 @@ const allEntries: Entry[] = [
     entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
     createdAt: 1672531200000,
   },
+  {
+    uuid: "abc",
+    entryType: "fruit",
+    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
+    createdAt: 1672531200000,
+  },
+  {
+    uuid: "abc",
+    entryType: "fruit",
+    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
+    createdAt: 1672531200000,
+  },
+  {
+    uuid: "abc",
+    entryType: "fruit",
+    entryData: { "Which fruit is your favourite?": "This one", "How many fruits are there?": "a billion" },
+    createdAt: 1672531200000,
+  },
 ];
 
 const entryTypes: EntryType[] = [
@@ -65,12 +85,9 @@ const entryTypes: EntryType[] = [
 ];
 
 const filteredEntries = computed(() => {
-
   return allEntries.filter((entry) => {
     const entryTypeMatches =
-      !selectedEntryType.value ||
-      selectedEntryType.value === "Any" ||
-      selectedEntryType.value.key === entry.entryType;
+      !selectedEntryType.value || selectedEntryType.value === "Any" || selectedEntryType.value.key === entry.entryType;
 
     let searchMatches = true;
     if (searchText.value.length > 0) {
@@ -80,7 +97,6 @@ const filteredEntries = computed(() => {
 
     return entryTypeMatches && searchMatches;
   });
-
 });
 
 function searchEntryData(entry: Entry, searchText: string) {
@@ -121,6 +137,14 @@ function formatDate(date: number) {
   text-align: left;
   width: 100%;
   margin-top: 12px;
+}
+
+.entries-table th {
+  padding-bottom: 8px;
+}
+
+.entries-table tr:nth-child(even) {
+  background-color: var(--ion-color-light);
 }
 
 .entry-date,
