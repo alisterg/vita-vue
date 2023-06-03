@@ -57,7 +57,7 @@ const appPages = [
 ];
 
 const store = getStore();
-store.initMockData();
+store.loadData();
 
 const currentPageName = ""; // TODO
 selectedIndex.value = appPages.findIndex((page) => page.title.toLowerCase() === currentPageName.toLowerCase());

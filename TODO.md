@@ -11,8 +11,8 @@
 - [ ] EntryTypeUpdate
 - [ ] RoutineUpdate
 - [x] RoutineExecute
-- [ ] Hook up API
-- [ ] Add build instructions to docs
+- [x] Hook up API
+- [x] Add build instructions to docs
 
 # Wishlist
 

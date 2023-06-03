@@ -16,3 +16,10 @@ Installation:
 2. `npm run dev` to host at localhost:5173
 3. `npm run test:unit` to run the unit tests
 4. `npm run test:e2e` to run the cypress tests
+
+iOS Setup:
+
+- `ionic cap add ios` to add the ios directory
+- Add your appId to `capacitor.config.ts`
+- `ionic cap sync` to sync changes to the iOS project
+- `ionic cap open ios` to open xcode

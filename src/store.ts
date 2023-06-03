@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { Entry, EntryType, Routine } from "./types";
+import { EntryApi } from "./core/EntryApi";
 
 export const getStore = defineStore("store", {
   state: () => ({
@@ -9,6 +10,12 @@ export const getStore = defineStore("store", {
     entries: [] as Entry[],
   }),
   actions: {
+    async loadData() {
+      this.entries = await EntryApi.getAll();
+      // get routines
+      // get entry types
+      // get entries
+    },
     initMockData() {
       this.routines = [
         { key: "daily", entryTypes: ["fruit", "vegetables"] },

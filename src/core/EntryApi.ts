@@ -1,9 +1,16 @@
-import { Api } from "./api";
+import { Entry } from "@/types";
+import { Api } from "./Api";
 
 export class EntryApi extends Api {
+  private static parseEntry(entry: any) {
+    return {
+      ...entry,
+      createdAt: parseInt(entry.createdAt + "000"),
+    } as Entry;
+  }
+
   static async getAll() {
-    const response = await this.sendRequest("/entries", "GET");
-    console.log(response);
-    return response.data;
+    const result = await this.sendRequest("/entry/all", "GET");
+    return result.map(this.parseEntry);
   }
 }

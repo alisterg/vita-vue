@@ -44,6 +44,8 @@ const searchText = ref("");
 const selectedEntryType = ref();
 
 const filteredEntries = computed(() => {
+  if (!store.entries) return [];
+
   return store.entries.filter((entry) => {
     const entryTypeMatches =
       !selectedEntryType.value || selectedEntryType.value === "Any" || selectedEntryType.value.key === entry.entryType;
