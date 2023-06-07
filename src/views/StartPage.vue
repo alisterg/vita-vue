@@ -1,5 +1,7 @@
 <template>
   <page-layout title="Home">
+    <IonProgressBar type="indeterminate" color="secondary" v-if="store.isLoading"></IonProgressBar>
+
     <div>
       <h1 class="section-header">Entries</h1>
       <div>
@@ -25,6 +27,11 @@
 </template>
 
 <script setup lang="ts">
-import { IonButton } from "@ionic/vue";
+import { IonButton, IonProgressBar, onIonViewWillEnter } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
+import { getStore } from "@/store";
+
+const store = getStore();
+
+onIonViewWillEnter(() => store.loadData());
 </script>

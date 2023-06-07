@@ -10,12 +10,15 @@ export const getStore = defineStore("store", {
     routines: [] as Routine[],
     entryTypes: [] as EntryType[],
     entries: [] as Entry[],
+    isLoading: false,
   }),
   actions: {
     async loadData() {
+      this.isLoading = true;
       this.entries = await EntryApi.getAll();
       this.entryTypes = await EntryTypeApi.getAll();
       this.routines = await RoutineApi.getAll();
+      this.isLoading = false;
     },
     initMockData() {
       this.routines = [
