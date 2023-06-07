@@ -30,11 +30,12 @@
 </template>
 
 <script setup lang="ts">
-import { IonButton, IonInput, IonSelect, IonSelectOption, toastController } from "@ionic/vue";
+import { IonButton, IonInput, IonSelect, IonSelectOption } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
 import { EntryType, Routine } from "@/types";
 import { computed, ref } from "vue";
 import { getStore } from "@/store";
+import { toasty } from "@/core/utils";
 
 const store = getStore();
 
@@ -47,15 +48,6 @@ const availableEntryTypes = computed(() => {
     (entryType) => !selectedEntryTypes.value.find((selected) => selected.key === entryType.key)
   );
 });
-
-async function toasty(msg: string) {
-  const toast = await toastController.create({
-    message: msg,
-    duration: 1000,
-  });
-
-  await toast.present();
-}
 
 async function save() {
   const cleanedName = routineName.value.trim();

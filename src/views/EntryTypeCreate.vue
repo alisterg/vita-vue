@@ -22,22 +22,14 @@
 </template>
 
 <script setup lang="ts">
-import { InputCustomEvent, IonButton, IonInput, toastController } from "@ionic/vue";
+import { InputCustomEvent, IonButton, IonInput } from "@ionic/vue";
 import PageLayout from "./PageLayout.vue";
 import { EntryType } from "@/types";
 import { ref } from "vue";
+import { toasty } from "@/core/utils";
 
 const entryTypeName = ref("");
 const prompts = ref([""]);
-
-async function toasty(msg: string) {
-  const toast = await toastController.create({
-    message: msg,
-    duration: 1000,
-  });
-
-  await toast.present();
-}
 
 async function save() {
   const cleanedName = entryTypeName.value.trim();
