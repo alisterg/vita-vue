@@ -27,6 +27,10 @@ import PageLayout from "./PageLayout.vue";
 import { EntryType } from "@/types";
 import { ref } from "vue";
 import { toasty } from "@/core/utils";
+import { EntryTypeApi } from "@/core/EntryTypeApi";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const entryTypeName = ref("");
 const prompts = ref([""]);
@@ -47,6 +51,13 @@ async function save() {
     key: entryTypeName.value,
     prompts: prompts.value.filter((item) => !!item),
   };
+
+  try {
+    await EntryTypeApi.create(entryType);
+    router.replace("/");
+  } catch (e) {
+    toasty(String(e));
+  }
 }
 
 function handlePromptInput(event: InputCustomEvent, idx: number) {

@@ -10,6 +10,15 @@ export class Api {
     };
 
     const response = await fetch(baseUrl + endpoint, options);
+
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+
+    if (response.status === 201) {
+      return;
+    }
+
     return response.json();
   }
 }

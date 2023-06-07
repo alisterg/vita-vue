@@ -6,4 +6,8 @@ export class RoutineApi extends Api {
     const result = await this.sendRequest("/routine/all", "GET");
     return result as Routine[];
   }
+
+  static async create(routine: Routine) {
+    await this.sendRequest("/routine", "POST", routine);
+  }
 }

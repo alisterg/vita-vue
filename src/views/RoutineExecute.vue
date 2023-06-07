@@ -26,8 +26,12 @@ import PageLayout from "./PageLayout.vue";
 import { EntryDto, EntryType } from "@/types";
 import { computed, onMounted, ref } from "vue";
 import { getStore } from "@/store";
+import { EntryApi } from "@/core/EntryApi";
+import { toasty } from "@/core/utils";
+import { useRouter } from "vue-router";
 
 const store = getStore();
+const router = useRouter();
 
 const entryTypes = computed(() => {
   if (!store.currentRoutine) return [];
@@ -59,7 +63,7 @@ function resetPromptResponses() {
   promptResponses.value = res;
 }
 
-function save() {
+async function save() {
   const entries: EntryDto[] = [];
 
   for (let entryType in promptResponses.value) {
@@ -74,7 +78,13 @@ function save() {
     });
   }
 
-  console.log(JSON.stringify(entries));
+  try {
+    await EntryApi.bulkCreate(entries);
+    router.replace("/");
+  } catch (e) {
+    toasty(String(e));
+    console.error(e);
+  }
 }
 </script>
 

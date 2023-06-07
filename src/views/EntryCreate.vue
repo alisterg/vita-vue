@@ -34,10 +34,14 @@ import PageLayout from "./PageLayout.vue";
 import { EntryType } from "@/types";
 import { ref } from "vue";
 import { getStore } from "@/store";
+import { EntryApi } from "@/core/EntryApi";
+import { toasty } from "@/core/utils";
+import { useRouter } from "vue-router";
 
 const store = getStore();
+const router = useRouter();
 
-const selectedEntryType = ref();
+const selectedEntryType = ref<EntryType>();
 const promptResponses = ref<Record<string, string>>({});
 
 function entryTypeChanged(event: CustomEvent) {
@@ -50,8 +54,20 @@ function entryTypeChanged(event: CustomEvent) {
   promptResponses.value = emptyResponses;
 }
 
-function save() {
-  console.log(promptResponses.value);
+async function save() {
+  if (!selectedEntryType.value) return;
+
+  try {
+    await EntryApi.create({
+      entryType: selectedEntryType.value.key,
+      entryData: promptResponses.value,
+    });
+
+    router.replace("/");
+  } catch (e) {
+    toasty(String(e));
+    console.error(e);
+  }
 }
 </script>
 

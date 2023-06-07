@@ -6,4 +6,8 @@ export class EntryTypeApi extends Api {
     const result = await this.sendRequest("/entry-type/all", "GET");
     return result as EntryType[];
   }
+
+  static async create(entryType: EntryType) {
+    await this.sendRequest("/entry-type", "POST", entryType);
+  }
 }

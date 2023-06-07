@@ -36,8 +36,11 @@ import { EntryType, Routine } from "@/types";
 import { computed, ref } from "vue";
 import { getStore } from "@/store";
 import { toasty } from "@/core/utils";
+import { RoutineApi } from "@/core/RoutineApi";
+import { useRouter } from "vue-router";
 
 const store = getStore();
+const router = useRouter();
 
 const routineName = ref("");
 const isAdding = ref(false);
@@ -64,7 +67,13 @@ async function save() {
     key: routineName.value,
     entryTypes: selectedEntryTypes.value.map((entryType) => entryType.key),
   };
-  console.log(routine);
+
+  try {
+    await RoutineApi.create(routine);
+    router.replace("/");
+  } catch (e) {
+    toasty(String(e));
+  }
 }
 
 function entryTypeChanged(event: CustomEvent) {
